@@ -34,9 +34,14 @@ result_display.pack(pady=10)
 def calculate(expression):
     try:
         result = eval(expression)
-        result_display.config(text=str(result))
+        result_display.configure(text=str(result))
     except Exception as e:
-        result_display.config(text="Invalid expression")
+        result_display.configure(text="Invalid expression")
 
 # Run the main loop
-root.mainloop()
+        
+
+if __name__ == "__main__":
+
+    # Runs the app
+    root.mainloop()  
