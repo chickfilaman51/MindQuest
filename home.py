@@ -1,6 +1,6 @@
 import tkinter as tk
 import customtkinter as ctk
-
+import rules
 # Set the appearance mode and color theme
 ctk.set_appearance_mode("System")
 ctk.set_default_color_theme("green")
@@ -22,9 +22,10 @@ input_field.pack(pady=10)
 input_field.place(relx=.5, rely=.60, anchor="c")
 
 # Start button
-calculate_button = ctk.CTkButton(root, text="Start")
+calculate_button = ctk.CTkButton(root, text="Start", command=rules.create_rules_window)
 calculate_button.pack(pady=10)
 calculate_button.place(relx=.5, rely=.65, anchor="c")
+
 
 # Run the main loop
 if __name__ == "__main__":
