@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import *
 import customtkinter as ctk
 import rules
 # Set the appearance mode and color theme
@@ -11,6 +12,13 @@ root.title("Math App")
 root.geometry("400x400")
 
 root.attributes('-fullscreen', True)
+
+#Defining image
+bg=PhotoImage(file="assets/forest.png")
+
+#Making background
+background=Label(root,image=bg)
+background.place(x=0,y=0)
 
 # Title label
 title_label = ctk.CTkLabel(root, text="Mindquest", font=("Arial",  150, "bold"))
