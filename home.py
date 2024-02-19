@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 import customtkinter as ctk
 import rules
+from PIL import Image, ImageTk
 # Set the appearance mode and color theme
 ctk.set_appearance_mode("System")
 ctk.set_default_color_theme("green")
@@ -14,11 +15,18 @@ root.geometry("400x400")
 root.attributes('-fullscreen', True)
 
 #Defining image
-bg=PhotoImage(file="assets/forest.png")
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
 
+# Load and resize the image
+bgImage = Image.open("assets/forest.png")
+bgImage = bgImage.resize((screen_width, screen_height))
 #Making background
-background=Label(root,image=bg)
-background.place(x=0,y=0)
+background_image = ImageTk.PhotoImage(bgImage)
+
+# Create a Label widget to display the background image
+background = Label(root, image=background_image)
+background.place(x=0, y=0)
 
 # Title label
 title_label = ctk.CTkLabel(root, text="Mindquest", font=("Arial",  150, "bold"))
