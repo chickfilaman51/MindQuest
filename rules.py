@@ -24,5 +24,4 @@ def create_rules_window():
 
     rules_window.mainloop()
 
-# Call the function to create the rules window
-create_rules_window()
+
