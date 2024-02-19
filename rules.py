@@ -10,7 +10,7 @@ def create_rules_window():
     rules_window = ctk.CTk()
     rules_window.title("Rules")
     rules_window.geometry("400x400")
-
+    rules_window.attributes('-fullscreen', True)
     # Add rules text here
     rules_label = ctk.CTkLabel(rules_window, text="This app is dedicated to helping people that have trouble learning in school.\nThis app uses fun activities, while still allowing kids to learn.\nBy clicking this button, you will be automatically sent to a placement test where you will be tested on how much knowledge you already have when it comes to math", font=("Arial",  15))
     rules_label.pack(pady=10)
