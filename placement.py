@@ -1,6 +1,6 @@
 import tkinter as tk
 import customtkinter as ctk
-
+import rules
 # Define questions for each grade
 questions = {
     1: ["1 + 1 = ?", "2 + 3 = ?"],
