@@ -17,7 +17,14 @@ def create_rules_window():
     rules_label = ctk.CTkLabel(rules_window, text="This app is dedicated to helping people that have trouble learning in school.\nThis app uses fun activities, while still allowing kids to learn.\nBy clicking this button, you will be automatically sent to a placement test where you will be tested on how much knowledge you already have when it comes to math", font=("Arial",  15))
     rules_label.pack(pady=10)
     rules_label.place(relx=.5, rely=.45, anchor="c")
-    
+    #Image
+    screen_width=rules_window.winfo_screenwidth()
+    screen_height=rules_window.winfo_screenheight()
+    bg=Image.open("assets/forest.png")
+    bg=bg.resize((screen_width,screen_height))
+    background_im=ImageTk.PhotoImage(bg)
+    background = Label(rules_window,image=background_im)
+    background.place(x=0,y=0)
     # Placement test button
     placement_button = ctk.CTkButton(rules_window, text="Start Placement Test", command=show_placement_test)
     placement_button.pack(pady=10)
