@@ -1,9 +1,9 @@
 import tkinter as tk
 import customtkinter as ctk
+import placement
 # Function to show the placement test window
 def show_placement_test():
-    # Code to show the placement test window goes here
-    print("Placement test window will open here.")
+    placement.start_placement_test()
 
 # Create the rules window
 def create_rules_window():
