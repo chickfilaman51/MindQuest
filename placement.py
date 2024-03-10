@@ -9,10 +9,8 @@ questions = {
     # Add questions for other grades similarly
 }
 
-
-
-
-   
+# Initialize a dictionary to store the current question index for each grade
+current_question_index = {}
 
 def display_next_question(grade):
     grade_questions = questions.get(grade, [])
@@ -21,8 +19,8 @@ def display_next_question(grade):
         question_window.title(f"Grade {grade} - Question")
         question_window.geometry("400x200")
         question_window.attributes('-fullscreen', True)
-        current_question_index = question_window.current_question_index.get(grade, 0)
-        current_question = grade_questions[current_question_index]
+        current_question_index.setdefault(grade, 0)  # Initialize the current question index if not already set
+        current_question = grade_questions[current_question_index[grade]]
         question_label = ctk.CTkLabel(question_window, text=current_question, font=("Arial", 15))
         question_label.pack(pady=10)
         question_label.place(relx=.5, rely=.45, anchor="c")
@@ -32,8 +30,8 @@ def display_next_question(grade):
             # Code to check the answer goes here
             print(f"Answer submitted: {answer}")
             # Display next question for the same grade
-            if current_question_index + 1 < len(grade_questions):
-                question_window.current_question_index[grade] = current_question_index + 1
+            if current_question_index[grade] + 1 < len(grade_questions):
+                current_question_index[grade] += 1
                 display_next_question(grade)
             else:
                 print("No more questions for this grade")
