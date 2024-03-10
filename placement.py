@@ -32,10 +32,11 @@ def display_next_question(grade):
             # Display next question for the same grade
             if current_question_index[grade] + 1 < len(grade_questions):
                 current_question_index[grade] += 1
+                question_window.destroy()
                 display_next_question(grade)
             else:
                 print("No more questions for this grade")
-            question_window.destroy()
+                question_window.destroy()
 
         # Answer entry field
         answer_entry = ctk.CTkEntry(question_window)
