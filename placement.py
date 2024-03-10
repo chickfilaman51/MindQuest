@@ -1,6 +1,7 @@
 import tkinter as tk
 import customtkinter as ctk
 import rules
+
 # Define questions for each grade
 questions = {
     1: ["1 + 1 = ?", "2 + 3 = ?"],
@@ -11,8 +12,10 @@ questions = {
 
 # Initialize a dictionary to store the current question index for each grade
 current_question_index = {}
+question_num = 0
 
 def display_next_question(grade):
+    global question_num  # Declare question_num as a global variable
     grade_questions = questions.get(grade, [])
     if grade_questions:
         question_window = ctk.CTk()
@@ -21,18 +24,23 @@ def display_next_question(grade):
         question_window.attributes('-fullscreen', True)
         current_question_index.setdefault(grade, 0)  # Initialize the current question index if not already set
         current_question = grade_questions[current_question_index[grade]]
+        num_label = ctk.CTkLabel(question_window, text=f"Question {grade + question_num}", font=("Arial", 15))
         question_label = ctk.CTkLabel(question_window, text=current_question, font=("Arial", 15))
+        num_label.pack(pady= 15)
         question_label.pack(pady=10)
+        question_label.place(relx=.5, rely=.35, anchor="c")
         question_label.place(relx=.5, rely=.45, anchor="c")
 
         # Function to handle the submission of the answer
         def submit_answer(answer):
+            global question_num  # Use nonlocal to access the global question_num
             # Code to check the answer goes here
             print(f"Answer submitted: {answer}")
             # Display next question for the same grade
             if current_question_index[grade] + 1 < len(grade_questions):
                 current_question_index[grade] += 1
                 question_window.destroy()
+                question_num += 1
                 display_next_question(grade)
             else:
                 print("No more questions for this grade")
@@ -50,6 +58,7 @@ def display_next_question(grade):
 
         question_window.mainloop()
     else:
+        question_num = 0
         print(f"No questions available for Grade {grade}")
 
 # Main function to start the placement test
